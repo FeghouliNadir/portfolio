@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background-color: #F2F2F2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #FF7A8E;
+            color: white;
+            padding: 30px;
+            border-bottom-left-radius: 100px;
+            position: relative;
+        }
+
+        .menu-icon {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+        }
+
+        .menu-icon:hover {
+            color: black;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FF7A8E;
+            min-width: 100%;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .show-dropdown .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: #FF7A8E;
+            color: white;
+            padding: 10px;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .account-section {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff69b4;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+        }
+
+        input[type="submit"] {
+            background-color: #ff69b4;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .profile-pic-container {
+            width: 100%;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px auto;
+            background-color: #ff69b4;
+            color: #ffffff;
+            text-align: center;
+            line-height: 150px;
+            font-size: 48px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header" id="head">
+            <div class="menu-icon" id="dropdownIcon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+
+            <div class="dropdown-content">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search..." onkeyup="search()">
+                </div>
+                <a href="main.html">Home</a>
+                <a href="profiel.html">Profile</a>
+                <a href="winkelmand.html">Cart</a>
+                <a href="dronepage.html">Drone Tracking</a>
+                <a href="login.html">Logout</a>
+            </div>
+        </div>
+
+        <div class="account-section">
+            <h1>Account Page</h1>
+            <form>
+                <label for="profile-pic">Profile Picture:</label>
+                <input type="file" id="profile-pic" name="profile-pic">
+                <div class="profile-pic">+</div>
+                <hr>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <input type="submit" value="Save">
+            </form>
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Coptermail - All rights reserved
+        </div>
+    </div>
+
+    <script>
+        const dropdownIcon = document.getElementById('dropdownIcon');
+        const dropdownContent = document.querySelector('.dropdown-content');
+        const searchInput = document.getElementById('searchInput');
+        const products = document.getElementsByClassName('product');
+
+        let isCurved = true;
+
+        dropdownIcon.addEventListener('click', () => {
+            const container = document.querySelector('.container');
+            container.classList.toggle('show-dropdown');
+
+            if (isCurved) {
+                document.getElementById('head').style.borderBottomLeftRadius = '0';
+            } else {
+                document.getElementById('head').style.borderBottomLeftRadius = '100px';
+            }
+
+            isCurved = !isCurved;
+        });
+
+        dropdownIcon.addEventListener('click', () => {
+            dropdownContent.classList.toggle('show-dropdown');
+        });
+
+        searchInput.addEventListener('keyup', () => {
+            const filter = searchInput.value.toUpperCase();
+
+            for (let i = 0; i < products.length; i++) {
+                const product = products[i];
+                const productText = product.innerText || product.textContent;
+
+                if (productText.toUpperCase().indexOf(filter) > -1) {
+                    product.style.display = '';
+                } else {
+                    product.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

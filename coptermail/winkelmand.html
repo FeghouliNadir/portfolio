@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coptermail main</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background-color: #F2F2F2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .header {
+            background-color: #FF7A8E;
+            color: white;
+            padding: 30px;
+            border-bottom-left-radius: 100px;
+            position: relative;
+        }
+
+        .menu-icon {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+        }
+
+        .menu-icon:hover {
+            color: black;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FF7A8E;
+            min-width: 100%;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .show-dropdown .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar {
+            padding: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .footer {
+            background-color: #FF7A8E;
+            color: white;
+            padding: 10px;
+            margin-top: auto;
+        }
+
+        /* Shopping Cart Styles */
+        .shopping-cart {
+            background-color: #FFD1D9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .shopping-cart h2 {
+            color: #FF7A8E;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            flex: 1;
+        }
+
+        .cart-item-remove {
+            cursor: pointer;
+            color: #FF7A8E;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .pay-button {
+            display: inline-block;
+            background-color: #FF7A8E;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .pay-button:hover {
+            background-color: #FF5063;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header" id="head">
+            <div class="menu-icon" id="dropdownIcon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+
+            <div class="dropdown-content">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Zoeken..." onkeyup="search()">
+                </div>
+                <a href="main.html">Home</a>
+                <a href="profiel.html">Profiel</a>
+                <a href="winkelmand.html">Winkelmandje</a>
+                <a href="dronepage.html">Drone Tracking</a>
+                <a href="login.html">uitloggen</a>
+            </div>
+        </div>
+
+        <div class="shopping-cart">
+            <h2>Shopping Cart</h2>
+            <div class="cart-item">
+                <img src="product1.jpg" alt="Product 1">
+                <div class="cart-item-name">Product 1</div>
+                <div class="cart-item-remove">Remove</div>
+            </div>
+            <div class="cart-item">
+                <img src="product2.jpg" alt="Product 2">
+                <div class="cart-item-name">Product 2</div>
+                <div class="cart-item-remove">Remove</div>
+            </div>
+            <div class="cart-item">
+                <img src="product3.jpg" alt="Product 3">
+                <div class="cart-item-name">Product 3</div>
+                <div class="cart-item-remove">Remove</div>
+            </div>
+            <div class="cart-total">
+                Total: $99.99
+            </div>
+            <a href="betalen.html" class="pay-button">Pay</a>
+        </div>
+
+
+
+        <div class="footer">
+            &copy; 2023 Coptermail - All rights reserved
+        </div>
+    </div>
+
+    <script>
+        // Initialize a variable to keep track of the state
+        var isCurved = true;
+
+        // Add event listener to toggle dropdown content and curve state
+        document.getElementById("dropdownIcon").addEventListener("click", function () {
+            var dropdownContent = document.querySelector(".dropdown-content");
+            var container = document.querySelector(".container");
+
+            container.classList.toggle("show-dropdown");
+
+            // Toggle the curve state
+            if (isCurved) {
+                document.getElementById('head').style.borderBottomLeftRadius = '0';
+            } else {
+                document.getElementById('head').style.borderBottomLeftRadius = '100px';
+            }
+
+            // Update the state
+            isCurved = !isCurved;
+        });
+
+        document.getElementById('dropdownIcon').addEventListener('click', function () {
+            const dropdownContent = document.querySelector('.dropdown-content');
+            dropdownContent.classList.toggle('show-dropdown');
+        });
+
+        function search() {
+            const searchInput = document.getElementById('searchInput');
+            const filter = searchInput.value.toUpperCase();
+            const products = document.getElementsByClassName('product');
+
+            for (let i = 0; i < products.length; i++) {
+                const product = products[i];
+                const productText = product.innerText || product.textContent;
+
+                if (productText.toUpperCase().indexOf(filter) > -1) {
+                    product.style.display = '';
+                } else {
+                    product.style.display = 'none';
+                }
+            }
+        }
+
+        // Get all the remove buttons
+        var removeButtons = document.querySelectorAll(".cart-item-remove");
+
+        // Attach event listener to each remove button
+        removeButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                // Find the parent cart item and remove it
+                var cartItem = button.parentNode;
+                cartItem.parentNode.removeChild(cartItem);
+            });
+        });
+    </script>
+</body>
+
+</html>

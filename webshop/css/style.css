@@ -1,0 +1,356 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    /* Set a background color for the body */
+}
+
+/* Create a grid-like layout with better spacing */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Improved spacing for larger screens */
+    align-items: center;
+    padding: 20px;
+    /* Add padding for better spacing */
+    height: 80vh;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Adjusted to start at the top */
+    align-items: center;
+    /* Center content horizontally */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+    /* Adjusted max-width */
+    width: calc(50% - 20px);
+    /* Divide the container into halves and add spacing */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Added max-height transition */
+    margin: 10px;
+    /* Adjust margin for better spacing */
+    background-color: #fff;
+    /* Add a white background */
+    cursor: pointer;
+    /* Add pointer cursor to indicate clickability */
+    max-height: 300px;
+    /* Start with a closed product */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, margin 0.3s ease-in-out;
+}
+
+.product.expanded {
+    max-height: 1000px;
+    /* Expand to the maximum height */
+    margin: 10px;
+    /* Add margin when expanded */
+}
+
+.product img {
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+.product .product-info,
+.product .product-actions {
+    display: none;
+}
+
+.product.expanded .product-info,
+.product.expanded .product-actions {
+    display: block;
+    margin-top: 10px;
+    /* Added margin when expanded */
+}
+
+
+
+#pistolProduct .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 35vh;
+}
+
+#pistolProduct:hover .tooltiptext {
+    visibility: visible;
+}
+
+#akProduct .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 35vh;
+}
+
+#akProduct:hover .tooltiptext {
+    visibility: visible;
+}
+
+#revolverProduct .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 35vh;
+}
+
+#revolverProduct:hover .tooltiptext {
+    visibility: visible;
+}
+
+.icon .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 35vh;
+}
+
+.icon:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* Improve the add to cart button style */
+.add-to-cart {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    /* Adjust padding for a better button size */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3;
+}
+
+/* Style the shopping cart */
+.cart {
+    position: fixed;
+    width: 20vw;
+    right: 10px;
+    top: 10vh;
+    /* Adjust the width as needed */
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    /* Allow vertical scrolling if needed */
+    display: none;
+    /* Other cart styles here */
+}
+
+/* Position the cart icon at the top right */
+.cart-toggle-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    /* Add other icon/button styles here */
+}
+
+.cart h2 {
+    text-align: center;
+}
+
+.cart-items {
+    margin-bottom: 10px;
+}
+
+.cart-total {
+    text-align: right;
+    margin-top: 10px;
+}
+
+/* Improve the style of the payment button */
+#pay {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#pay:hover {
+    background-color: #0056b3;
+}
+
+.quantity-control button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    /* Use the same padding as the "Pay Now" button */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-control button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the input for the value */
+.quantity {
+    width: 30px;
+    /* Reduce the width for a smaller input */
+    text-align: center;
+    font-size: 16px;
+    /* Reduce font size */
+}
+
+/* Media query for screens smaller than 768px (typical mobile screens) */
+@media (max-width: 768px) {
+    body {
+        overflow: scroll;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        height: auto
+    }
+
+    .product {
+        max-width: 80%;
+        /* Adjusted max-width for full width */
+        width: calc(100% - 20px);
+        /* Full width with spacing */
+        margin: 10px 0;
+        /* Adjusted margin for better spacing */
+    }
+
+    .product img {
+        margin-bottom: 5px;
+    }
+
+    .cart {
+        padding: 20px;
+        border-radius: 0;
+        position: fixed;
+        width: 80%;
+    }
+
+}
+
+.icon img {
+    width: 50px;
+}
+
+/* Add styles for the payment popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.popup h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.popup label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.popup input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.popup button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style the close button */
+.popup-close-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.popup-close-button:hover {
+    background-color: #0056b3;
+}

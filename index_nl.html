@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nadir</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init('IzLaqZpFI3oOYog9N'); // Replace 'YOUR_SERVICE_ID' with your actual Email.js service ID.
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById('contact-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                this.contact_number.value = Math.random() * 100000 | 0;
+                // Replace 'contact_service' and 'contact_form' with your actual service and template IDs.
+                emailjs.sendForm('service_ctcq05p', 'contact_form', this)
+                    .then(function (response) {
+                        console.log('Email sent:', response);
+                        // Clear the form fields after successful submission
+                        document.getElementById('contact-form').reset();
+                    })
+                    .catch(function (error) {
+                        console.error('Email send failed:', error);
+                    });
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <nav id="header">
+            <div class="nav-logo">
+                <p class="nav-name">Feghouli</p>
+                <span>.</span>
+            </div>
+            <div class="nav-menu" id="myNavMenu">
+                <ul class="nav_menu_list">
+                    <li class="nav_list">
+                        <a href="#home" class="nav-link active-link">Home</a>
+                    </li>
+                    <li class="nav_list">
+                        <a href="#about" class="nav-link">Over mij</a>
+                    </li>
+                    <li class="nav_list">
+                        <a href="#projects" class="nav-link">Projecten</a>
+                    </li>
+                    <li class="nav_list">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn" id="dark-mode-button">Donkere stand</button>
+            </div>
+            <div class="nav-menu-btn">
+                <!-- Add the hamburger menu icon here -->
+                <div class="ham-menu" onclick="myMenuFunction()">&#9776;</div>
+            </div>
+        </nav>
+    </div>
+    <!-- Sections -->
+    <div id="home" class="section">
+        <div class="home-left" data-sr="left">
+            <h1>Hallo, ik ben <br> <span id="typed-text"></span>
+            </h1>
+            <p>Welkom bij mijn portfolio.</p>
+
+
+            <div class="nav-button" id="cvBtn" onclick="window.location='CV_Sadiek.pdf';">
+                <button class="btn" id="cv">
+                    Download CV
+                    <i class="uil uil-file-alt"></i>
+                </button>
+            </div>
+
+            <a href="index.html" class="nav-button" id="cvBtn">
+                <button class="btn" id="translate">
+                    Laat pagina zien in Engels
+                    <i class="uil uil-language"></i>
+                </button>
+            </a>
+        </div>
+        <div class="home-right" data-sr="right">
+            <img src="images/me.webp" alt="mirror">
+        </div>
+
+        <div class="scroll-icon-box">
+            <a href="#about" class="scroll-btn">
+                <p>Scroll omlaag</p>
+            </a>
+        </div>
+    </div>
+    <div id="about" class="section">
+        <h2>about me</h2>
+        <div class="aboutContainer">
+            <div class="aboutText" data-sr="left">
+                <h3>Introductie</h3>
+                <p>
+                    Hallo, ik ben Nadir, een software developer in training. Ik ben Ik ben goed thuis in HTML, CSS en
+                    JavaScript.
+                    Daarnaast heb ik ervaring met Adobe applicaties zoals Photoshop, Illustrator, InDesign en XD.
+                    Ik heb ook enige ervaring met PHP en MySQL, wat mij een veelzijdige webontwikkelaar maakt.
+                </p>
+                <button id="getintouch" class="btn" onclick="scrollToContact()">Get in touch!</button>
+            </div>
+            <div class="skills" data-sr="right">
+                <h3>skills</h3>
+                <div class="bars">
+                    <div class="bar learning" data-skill="MySQL" class="skills-bar">
+                    </div>
+                    <div class="bar back basic" data-skill="PHP" class="skills-bar">
+                    </div>
+                    <div class="bar back intermediate" data-skill="Javascript" class="skills-bar">
+                    </div>
+                    <div class="bar front advanced" data-skill="CSS3" class="skills-bar">
+                    </div>
+                    <div class="bar front expert" data-skill="HTML5" class="skills-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="projects-container" data-sr="bottom">
+            <div class="card-perspectief"  onClick="parent.open('images/perspectief tekening.webp')">
+                <img class="img-card" src="images/perspectief tekening.webp" alt="tekening">
+                <div class="bio">
+                    <h1>perspectief tekening</h1>
+                    <p>Dit stuk is gemaakt in Adobe Illustrator als experiment met perspectief.</p>
+                </div>
+            </div>
+            <div class="card-coptermail" onClick="parent.open('copermail/login.html')">
+                <img class="img-card" src="images/copermail.webp" alt="coptermail">
+                <div class="bio">
+                    <h1>coptermail</h1>
+                    <p>Een webshop-webapp speciaal gemaakt met mobiele apparaten in gedachten, volledig gemaakt met
+                        HTML, CSS en JS.</p>
+                </div>
+            </div>
+            <div class="card-portfolio" onClick="parent.open('webshop/index.html')">
+                <img class="img-card" src="images/webshop.webp" alt="webshop">
+                <div class="bio">
+                    <h1>Portfolio demo</h1>
+                    <p>Een poging tot een uniek ontwerp voor een portfoliowebsite. Work in progress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contact" class="section">
+        <h2>Contact</h2>
+        <div class="contactMe" data-sr="bottom">
+            <h3>Get in Touch</h3>
+            <p>Heb je vragen of wil je samenwerken? Neem gerust contact op.</p>
+
+            <form id="contact-form">
+                <input type="hidden" name="contact_number">
+                <input type="text" name="user_name" id="name" placeholder="Your Name">
+                <input type="email" name="user_email" id="email" placeholder="Your Email">
+                <textarea name="message" id="message" cols="2" rows="2" placeholder="Your Message"></textarea>
+                <input type="submit" value="Send" id="send-button" class="send-button">
+            </form>
+
+            <div class="social-icons">
+                <a href="#" class="icon" title="LinkedIn"><i class="uil uil-linkedin-alt"></i></a>
+                <a href="https://github.com/FeghouliNadir" class="icon" title="GitHub"><i
+                        class="uil uil-github-alt"></i></a>
+            </div>
+        </div>
+    </div>
+    <script src="script/script.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+</body>
+
+</html>

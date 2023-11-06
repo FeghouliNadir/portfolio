@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="payment-popup" class="popup">
+        <div class="popup-content">
+            <h2>Payment Form</h2>
+            <form id="payment-form">
+                <!-- Add your form fields here -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="card-number" required>
+                <label for="memail">Email:</label>
+                <input type="text" id="email" name="expiry-date" required>
+                <label for="number">number:</label>
+                <input type="text" id="number" name="cvv" required>
+                <button type="submit">Submit Payment</button>
+            </form>
+            <button id="close-popup" class="popup-close-button">Close</button>
+        </div>
+    </div>
+    <!-- Move the cart icon outside the .container -->
+    <button id="cart-toggle" class="cart-toggle-button">
+        <i class="icon">
+            <img src="images/cart.svg" alt="cart">
+            <span class="tooltiptext">Pistol</span>
+        </i> <!-- Replace with your cart icon class or image -->
+    </button>
+    <div class="container">
+        <!-- Product 1 -->
+        <div class="product" id="pistolProduct">
+            <img src="images/pistol.png" alt="Pistol">
+            <div class="product-info">
+                <p><strong>Name:</strong> Pistol</p>
+                <p><strong>Price:</strong> €599</p>
+                <p><strong>Amount in Stock:</strong> <span class="stock" id="pistolStock">3</span></p>
+            </div>
+            <div class="product-actions">
+                <div class="quantity-control">
+                    <button class="decrement" id="pistolDown" title="remove from cart">-</button>
+                    <input type="text" class="quantity" id="pistolValue" value="0" disabled>
+                    <button class="increment" id="pistolUp" title="add to cart">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product" id="akProduct">
+            <img src="images/ak47.png" alt="AK-47">
+            <div class="product-info">
+                <p><strong>Name:</strong> AK-47</p>
+                <p><strong>Price:</strong> €2,999</p>
+                <p><strong>Amount in Stock:</strong> <span class="stock" id="akStock">3</span></p>
+            </div>
+            <div class="product-actions">
+                <div class="quantity-control">
+                    <button class="decrement" id="akDown" title="remove from cart">-</button>
+                    <input type="text" class="quantity" id="akValue" value="0" disabled>
+                    <button class="increment" id="akUp" title="add to cart">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product" id="revolverProduct">
+            <img src="images/revolver.png" alt="Revolver">
+            <div class="product-info">
+                <p><strong>Name:</strong> Revolver</p>
+                <p><strong>Price:</strong> €1,599</p>
+                <p><strong>Amount in Stock:</strong> <span class="stock" id="revolverStock">3</span></p>
+            </div>
+            <div class="product-actions">
+                <div class="quantity-control">
+                    <button class="decrement" id="revolverDown" title="remove from cart">-</button>
+                    <input type="text" class="quantity" id="revolverValue" value="0" disabled>
+                    <button class="increment" id="revolverUp" title="add to cart">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart" id="cart">
+        <!-- Cart content here -->
+        <h2>Your Shopping Cart</h2>
+        <div class="cart-items">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="cart-total">
+            <p><strong>Total:</strong> €<span id="cart-total">0.00</span></p>
+            <button id="pay">Pay Now</button>
+        </div>
+    </div>
+
+    <script src="script/script.js"></script>
+</body>
+
+</html>
